@@ -1,0 +1,18 @@
+/*====================================================================================================*/
+									/*Style for Account Infomation */
+#InfoAccount {
+	width: 90%;
+	margin: auto;
+}
+#InfoAccount label{
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+#InfoAccount img {
+	height: auto;
+	width: auto;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 50px;
+}

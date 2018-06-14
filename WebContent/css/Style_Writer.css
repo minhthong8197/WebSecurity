@@ -1,0 +1,63 @@
+/*====================================================================================================*/
+									/*Style for Websize Content */
+#Post {
+	width: 90%;
+	margin: auto;
+}
+#Post_Action {
+	padding-left: 40px;
+}
+
+/*====================================================================================================*/
+									/*Style for Websize Content [POST] */
+#btn_Newpost {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+/* Style for Table Post */
+	#tb_post th {
+		text-align: center;
+	}
+	#tb_post td {
+		text-align: center;
+	}
+	#tb_post_tt {
+		width: 4%;
+	}
+	#tb_post_id {
+		width: 6%
+	}
+	#tb_post_name {
+		width: 25%;
+	}
+	#tb_post_cat {
+		width: 15%
+	}
+	#tb_post_time {
+		width: 15%
+	}
+	#tb_post_stt {
+		width: 15%
+	}
+	#tb_post_btn {
+		width: 20%
+	}
+/*====================================================================================================*/
+									/*  Style for Form [New post]*/
+
+#Form_Newpost {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+#Form_Newpost label {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+#btnPost {
+	margin: auto;
+}
+.btn {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
