@@ -27,6 +27,14 @@
 </head>
 <body>
 	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+	%>
+	<%
 		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
 		try {
 			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
@@ -124,10 +132,11 @@
 					<form role="form" action="/WEB-INF/Writer_Manager.jsp">
 						<div class="form-group">
 							<label>Tên Bài viết</label> <input type="text" name="P_name"
-								class="form-control" id="txtPostname" value="Học HTML và CSS">
-							<label>Ngày viết</label> <input type="date" class="form-control"
-								id="txtDate" value="2017-11-04"> <label>Thể loại</label>
-							<select class="form-control">
+								class="form-control" maxlength="100" id="txtPostname"
+								value="Học HTML và CSS"> <label>Ngày viết</label> <input
+								maxlength="10" type="date" class="form-control" id="txtDate"
+								value="2017-11-04"> <label>Thể loại</label> <select
+								class="form-control">
 								<optgroup>
 									<option>Công nghệ</option>
 									<option selected="selected">Giáo dục</option>
@@ -137,7 +146,8 @@
 									<option>Khác</option>
 								</optgroup>
 							</select> <label>Nội dung</label>
-							<textarea class="form-control" id="txtarea" rows="20">
+							<textarea maxlength="20000" class="form-control" id="txtarea"
+								rows="20">
 		  						HTML/CSS có thể nói là khởi đầu của mọi tất cả vấn đề liên quan tới web, dù bạn là người làm nghành nào, miễn là có đụng tới quản trị web thì ít nhất phải biết qua hai cái này. Nếu bạn có ý định học lập trình web thì lại càng nên thành thạo hai cái này, nếu bạn là blogger chuyên viết bài thì cũng nên nắm cái này.
 
 								Bạn có thể là một blogger viết rất tốt, nhưng liệu bạn đã sử dụng thành thục các thẻ HTML và vùng chọn CSS căn bản chưa? Nếu câu trả lời là chưa thì điều đó đang hạn chế tiềm năng blogging của bạn đấy. Bạn có thể cầm gạch lên và bảo:
@@ -181,9 +191,9 @@
 							<script>
 								CKEDITOR.replace('txtarea');
 							</script>
-							<label>Đánh giá bài viết:</label> <input type="text"
-								name="comment" class="form-control" placeholder="Nhập đánh giá">
-							<br />
+							<label>Đánh giá bài viết:</label> <input maxlength="200"
+								type="text" name="comment" class="form-control"
+								placeholder="Nhập đánh giá"> <br />
 							<div class="col-md-3 col-md-offset-9">
 								<button type="button" class="btn btn-success" id="btnSubmit"
 									onclick="window.location='Admin_Manager_Check.jsp'">

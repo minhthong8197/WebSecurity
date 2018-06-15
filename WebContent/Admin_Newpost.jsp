@@ -27,6 +27,14 @@
 </head>
 <body>
 	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+	%>
+	<%
 		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
 		try {
 			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
@@ -113,12 +121,12 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<form action="NewAd" method="post" role="form">
 						<div class="form-group">
-							<label>Tên Bài viết</label> <input type="text" name="P_name"
-								class="form-control" placeholder="Nhập tên bài viết"
-								id="txtPostname"> <label>Ngày viết</label> <input
-								type="date" class="form-control" placeholder="Chọn ngày viết"
-								id="txtDate" name="P_date"> <label>Thể loại</label> <select
-								class="form-control" name="P_tl">
+							<label>Tên Bài viết</label> <input maxlength="100" type="text"
+								name="P_name" class="form-control"
+								placeholder="Nhập tên bài viết" id="txtPostname"> <label>Ngày
+								viết</label> <input maxlength="10" type="date" class="form-control"
+								placeholder="Chọn ngày viết" id="txtDate" name="P_date">
+							<label>Thể loại</label> <select class="form-control" name="P_tl">
 								<optgroup label="Chọn thể loại">
 									<option>Công nghệ</option>
 									<option>Giáo dục</option>
@@ -128,8 +136,9 @@
 									<option>Khac</option>
 								</optgroup>
 							</select> <label>Nội dung</label>
-							<textarea name="txtcontent" class="form-control" id="txtarea"
-								rows="15" placeholder="Nhập nội dung bài viết"></textarea>
+							<textarea maxlength="20000" name="txtcontent"
+								class="form-control" id="txtarea" rows="15"
+								placeholder="Nhập nội dung bài viết"></textarea>
 							<label> <input type="radio" id="textContent"> Tôi
 								chắc chắn về nội dung đăng tải là hợp pháp và đảm bảo thuần
 								phong mỹ tục.

@@ -16,6 +16,12 @@ public class CheckPower extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/CheckPower");
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (req.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			resp.sendRedirect(req.getContextPath() + "/");
+			return;
+		}
 		try {
 			String needPower = req.getAttribute("NeedPower").toString();// nếu đang null là catch
 			String refererURL = req.getAttribute("RefererURL").toString();// nếu đang null là catch

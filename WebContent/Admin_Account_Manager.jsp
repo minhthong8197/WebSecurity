@@ -30,6 +30,14 @@
 </head>
 <body>
 	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+	%>
+	<%
 		ResultSet resultset = null;
 		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
 		try {

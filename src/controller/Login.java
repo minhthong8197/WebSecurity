@@ -22,8 +22,17 @@ public class Login extends HttpServlet {
 		String password = "";
 		// biến lưu quyền trong hệ thống
 		String power = "";
-		username = req.getParameter("userName");
-		password = req.getParameter("password");
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (req.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			resp.sendRedirect(req.getContextPath() + "/");
+			return;
+		}
+		username = req.getParameter("userName").toString();
+		password = req.getParameter("password").toString();
+		if (username.length() > 18 || password.length() > 18) {
+			return;
+		}
 		HttpSession session = req.getSession();
 		try {
 			// kiểm tra quyền đang có trong hệ thống, nếu có rồi phải đăng xuất
@@ -43,6 +52,7 @@ public class Login extends HttpServlet {
 		} catch (Exception e) {
 			System.out.println("/Login: chưa có quyền trong hệ thống, tiến hành kiểm tra đăng nhập");
 		}
+		// chưa có quyền trong hệ thống
 		// biến lưu nơi chuyển hướng tùy theo quyền của tài khoản
 		String dispatcherURL = "/";
 		try {

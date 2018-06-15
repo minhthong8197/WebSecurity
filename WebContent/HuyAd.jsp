@@ -7,6 +7,14 @@
 <%@ page import="java.sql.DriverManager"%>
 
 <%
+	// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+	if (request.getContentLengthLong() > 50000) {
+		System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+		response.sendRedirect(request.getContextPath() + "/");
+		return;
+	}
+%>
+<%
 	Connection connect = null;
 	Statement s = null;
 	try {

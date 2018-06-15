@@ -32,6 +32,9 @@ public class DBConnection {
 		} catch (SQLException e) {
 			System.out.println("\t.DBConnection.connect() error SQLException");
 			// e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("\t.DBConnection.connect() error Exception");
+			// e.printStackTrace();
 		}
 		return conn;
 	}
@@ -85,8 +88,8 @@ public class DBConnection {
 			return i;
 		} catch (Exception e) {
 			System.out.println("\t.DBConnection.newPostAd() error");
+			return 0;
 		}
-		return 0;
 	}
 
 	// tao tai khoan moi

@@ -24,6 +24,14 @@
 </head>
 <body>
 	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+	%>
+	<%
 		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
 		try {
 			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
@@ -122,15 +130,16 @@
 				class="col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
 				<form role="form" action="NewAccount" method="post">
 					<div class="form-group">
-						<label>Username:</label> <input type="text" class="form-control"
-							maxlength="30" placeholder="Nhập Username" name="userName">
+						<label>Username:</label> <input maxlength="18" type="text"
+							class="form-control" placeholder="Nhập Username" name="userName">
 						<label>Password:</label> <input type="Password" name="userPass"
-							class="form-control" placeholder="Nhập Password"> <label>Nhập
-							lại Password:</label> <input type="Password" name="RetypePass"
-							class="form-control" placeholder="Nhập lại Password"> <label>Họ
-							và tên:</label> <input type="text" class="form-control"
+							class="form-control" maxlength="18" placeholder="Nhập Password">
+						<label>Nhập lại Password:</label> <input maxlength="18"
+							type="Password" name="RetypePass" class="form-control"
+							placeholder="Nhập lại Password"> <label>Họ và
+							tên:</label> <input maxlength="30" type="text" class="form-control"
 							placeholder="Nhập Họ tên người dùng" name="FullName"> <label>Ngày
-							sinh:</label> <input type="date" class="form-control"
+							sinh:</label> <input maxlength="10" type="date" class="form-control"
 							placeholder="Nhập ngày sinh" name="DateOfBirth"> <label>Giới
 							tính</label> <select class="form-control" name="check">
 							<optgroup label="Chọn thể loại">
@@ -138,9 +147,9 @@
 								<option>Nữ</option>
 							</optgroup>
 						</select> <br /> <label>Số điện thoại:</label> <input type="tel"
-							class="form-control" placeholder="Nhập Số điện thoại"
-							name="PhoneNumber"> <label>Mail:</label> <input
-							type="email" class="form-control"
+							class="form-control" maxlength="12"
+							placeholder="Nhập Số điện thoại" name="PhoneNumber"> <label>Mail:</label>
+						<input type="email" maxlength="20" class="form-control"
 							placeholder="Nhập địa chỉ e-mail" name="Email"> <label>Quyền
 							hạn</label> <select class="form-control" name="check1">
 							<optgroup label="Chọn thể loại">

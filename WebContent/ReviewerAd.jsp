@@ -33,6 +33,14 @@
 </head>
 <body>
 	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+	%>
+	<%
 		ResultSet resultset = null;
 		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
 		try {
@@ -131,21 +139,22 @@
 							while (resultset != null && resultset.next()) {
 						%>
 						<div class="form-group">
-							<label>Tên Bài viết</label> <input type="text" name="P_name"
-								class="form-control" id="txtPostname"
+							<label>Tên Bài viết</label> <input maxlength="100" type="text"
+								name="P_name" class="form-control" id="txtPostname"
 								value="<%=resultset.getString(1)%>"> <label>Ngày
-								viết</label> <input type="date" class="form-control" id="txtDate"
-								value="<%=resultset.getString(3)%>"> <label>Thể
-								loại</label> <input type="text" class="form-control" id="txtPostname"
-								value="<%=resultset.getString(4)%>"> <label>Nội
+								viết</label> <input maxlength="10" type="date" class="form-control"
+								id="txtDate" value="<%=resultset.getString(3)%>"> <label>Thể
+								loại</label> <input maxlength="15" type="text" class="form-control"
+								id="txtPostname" value="<%=resultset.getString(4)%>"> <label>Nội
 								dung</label>
-							<textarea class="form-control" id="txtarea" rows="15"> <%=resultset.getString(2)%> </textarea>
+							<textarea maxlength="20000" class="form-control" id="txtarea"
+								rows="15"> <%=resultset.getString(2)%> </textarea>
 							<script>
 								CKEDITOR.replace('txtarea');
 							</script>
-							<label>Đánh giá bài viết:</label> <input type="text"
-								name="comment" class="form-control" placeholder="Nhập đánh giá">
-							<br />
+							<label>Đánh giá bài viết:</label> <input maxlength="200"
+								type="text" name="comment" class="form-control"
+								placeholder="Nhập đánh giá"> <br />
 							<div class="col-md-3 col-md-offset-9">
 
 								<a href="DuyetAd.jsp?Pid=<%=resultset.getString(5)%>">

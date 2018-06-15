@@ -30,6 +30,13 @@
 </head>
 <body>
 	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+		//load du lieu cho trang
 		Connection connection = DriverManager.getConnection(
 				"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8", "root",
 				"1234");
@@ -127,18 +134,20 @@
 					%>
 					<div class="form-group">
 						<label>Username:</label> <input type="text" class="form-control"
-							id="txtUsername" name="Username"
+							id="txtUsername" name="Username" maxlength="18"
 							value="<%=resultset.getString(2)%>"> <label>Password:</label>
 						<input type="Password" name="Password" class="form-control"
-							id="txtPass" value="<%=resultset.getString(3)%>"> <label>Họ
-							và tên:</label> <input type="text" class="form-control" id="txtFullname"
-							name="Fullname" value="<%=resultset.getString(4)%>"> <label>Ngày
+							id="txtPass" value="<%=resultset.getString(3)%>" maxlength="18">
+						<label>Họ và tên:</label> <input type="text" class="form-control"
+							id="txtFullname" name="Fullname"
+							value="<%=resultset.getString(4)%>" maxlength="30"> <label>Ngày
 							Sinh</label> <input type="date" class="form-control" id="txtDate"
-							value="<%=resultset.getString(6)%>"> <label>Số
+							value="<%=resultset.getString(6)%>" maxlength="10"> <label>Số
 							điện thoại:</label> <input class="form-control" id="txtPhone"
-							name="Phone" value="<%=resultset.getString(7)%>"> <label>Vai
-							trò:</label> <br /> <input type="text" class="form-control" id="Quyen"
-							name="Quyen" value="<%=resultset.getString(5)%>"
+							name="Phone" value="<%=resultset.getString(7)%>" maxlength="12">
+						<label>Vai trò:</label> <br /> <input type="text"
+							class="form-control" id="Quyen" name="Quyen"
+							value="<%=resultset.getString(5)%>" maxlength="8"
 							disabled="disabled"> <a
 							href="Sua.jsp?UserID=<%=resultset.getString(1)%>">
 							<button type="button" class="btn btn-success" id="btnSubmit">

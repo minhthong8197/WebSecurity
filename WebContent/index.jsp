@@ -24,6 +24,14 @@
 
 </head>
 <body>
+	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+	%>
 	<div id="wrapper">
 		<div id="header">
 			<div class="header-top">
@@ -38,7 +46,7 @@
 					</div>
 					<div class="pull-right">
 						<a href="#Modal_Login" data-toggle="modal"><i
-							class="fa fa-sign-in"></i>Đăng Nhập</a>/ <a
+							class="fa fa-sign-in"></i>Đăng Nhập</a> / <a
 							href="#Modal_registration" data-toggle="modal"><i
 							class="fa fa-user-plus"></i>Đăng ký</a>
 					</div>
@@ -398,8 +406,9 @@
 				<div class="modal-header">
 					<h4 class="modal-title">Đăng Nhập</h4>
 				</div>
-				<form action="Login" method="post" id="form-login" name="form-login">
-					<div class="modal-body">
+				<div class="modal-body">
+					<form action="Login" method="post" id="form-login"
+						name="form-login">
 						<div>
 							<div>
 								<p>
@@ -415,7 +424,6 @@
 						</div>
 						<br />
 						<div>
-
 							<div>
 								<p>
 									<span class="glyphicon glyphicon-lock"> </span> Password
@@ -439,8 +447,8 @@
 								<button type="submit" class="btn btn-primary">Đăng Nhập</button>
 							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -25,6 +25,14 @@
 </head>
 <body>
 	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+	%>
+	<%
 		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
 		try {
 			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
@@ -111,12 +119,12 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<form role="form" action="/WEB-INF/Writer_Manager.jsp">
 						<div class="form-group">
-							<label>Tên Bài viết</label> <input type="text" name="P_name"
-								class="form-control" id="txtPostname"
+							<label>Tên Bài viết</label> <input maxlength="100" type="text"
+								name="P_name" class="form-control" id="txtPostname"
 								value="Tài liệu học lập trình"> <label>Ngày viết</label>
-							<input type="date" class="form-control" id="txtDate"
-								value="2017-10-30"> <label>Thể loại</label> <select
-								class="form-control">
+							<input maxlength="10" type="date" class="form-control"
+								id="txtDate" value="2017-10-30"> <label>Thể loại</label>
+							<select class="form-control">
 								<optgroup>
 									<option>Công nghệ</option>
 									<option selected="selected">Giáo dục</option>
@@ -126,7 +134,8 @@
 									<option>Khác</option>
 								</optgroup>
 							</select> <label>Nội dung</label>
-							<textarea class="form-control" id="txtarea" rows="15">
+							<textarea maxlength="20000" class="form-control" id="txtarea"
+								rows="15">
 		  						Hẳn là bạn đã thấy trên blog mình viết nội dung về lĩnh vực gì là nhiều nhất rồi đúng không? Và mình cũng tin rằng đó có thể là lý do mà bạn đã ghé thăm blog mình và xem bài viết này – đó là muốn tìm hiểu về WordPress – một mã nguồn mở hỗ trợ bạn tự làm website nhanh chóng.
 
 								Và nếu bạn muốn học cách tự làm website chuyên nghiệp thì có thể học cách sử dụng WordPress để biết cách làm website nhanh mà không cần có quá nhiều kiến thức về lập trình (chỉ cần rành máy tính, ham học hỏi là đủ). Và nếu bạn muốn học cách làm website với WordPress thì 50 bài hướng dẫn trong serie này sẽ dành cho bạn, kể cả bạn là người chưa biết gì.

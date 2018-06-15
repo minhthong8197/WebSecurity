@@ -23,6 +23,14 @@
 
 </head>
 <body>
+	<%
+		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
+		if (request.getContentLengthLong() > 50000) {
+			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			response.sendRedirect(request.getContextPath() + "/");
+			return;
+		}
+	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
 		<div id="header">
@@ -107,23 +115,24 @@
 			<div class="col-xs-12 col-sm-7 col-md-7">
 				<form role="form" action="Account_Thien.jsp">
 					<div class="form-group">
-						<label>Username:</label> <input type="text" class="form-control"
-							id="txtUsername" name="Username" value="ThienPhan"
-							disabled="disabled"> <label>Password:</label> <input
-							type="Password" name="Password" class="form-control" id="txtPass"
-							value="123456"> <label>Họ và tên:</label> <input
-							type="text" class="form-control" id="txtFullname" name="Fullname"
-							value="Phan Thiện"> <label>Ngày sinh:</label> <input
-							type="date" class="form-control" id="txtBirthday" name="Birthday"
-							value="1997-11-09"> <label>Số điện thoại:</label> <input
-							type="tel" class="form-control" id="txtPhone" name="Phone"
-							value="0989346582"> <label>Vai trò:</label> <br /> <input
-							type="checkbox" name="admin" value="Adminitrator"
-							checked="checked"> Adminitrator <br /> <input
-							type="checkbox" name="writer" value="Writer"> Writer <br />
-						<input type="checkbox" name="reviewer" value="Reviewer">
-						Reviewer <br /> <input type="submit" name="submit"
-							value="Lưu thay đổi" onclick="alert('Đã lưu thay đổi')"
+						<label>Username:</label> <input maxlength="18" type="text"
+							class="form-control" id="txtUsername" name="Username"
+							value="ThienPhan" disabled="disabled"> <label>Password:</label>
+						<input type="Password" maxlength="18" name="Password"
+							class="form-control" id="txtPass" value="123456"> <label>Họ
+							và tên:</label> <input type="text" maxlength="30" class="form-control"
+							id="txtFullname" name="Fullname" value="Phan Thiện"> <label>Ngày
+							sinh:</label> <input type="date" maxlength="10" class="form-control"
+							id="txtBirthday" name="Birthday" value="1997-11-09"> <label>Số
+							điện thoại:</label> <input type="tel" maxlength="12" class="form-control"
+							id="txtPhone" name="Phone" value="0989346582"> <label>Vai
+							trò:</label> <br /> <input type="checkbox" name="admin"
+							value="Adminitrator" checked="checked"> Adminitrator <br />
+						<input type="checkbox" name="writer" value="Writer">
+						Writer <br /> <input type="checkbox" name="reviewer"
+							value="Reviewer"> Reviewer <br /> <input type="submit"
+							name="submit" value="Lưu thay đổi"
+							onclick="alert('Đã lưu thay đổi')"
 							class="form-control btn-success">
 					</div>
 				</form>
