@@ -70,7 +70,7 @@
 								<span class="glyphicon glyphicon-user"></span> Cá nhân
 							</button>
 							<button type="button" class="btn btn-default btn-sm"
-								onclick="window.location='index.jsp'">
+								onclick="window.location='/WebSecurity/Logout'">
 								<span class="glyphicon glyphicon-share"></span> Đăng xuất
 							</button>
 							<hr />

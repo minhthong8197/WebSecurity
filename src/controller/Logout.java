@@ -21,7 +21,8 @@ public class Logout extends HttpServlet {
 		System.out.println("/Logout");
 		HttpSession session = req.getSession();
 		// String power = session.getAttribute("Power").toString();
-		session.removeAttribute("Power");
+		session.setAttribute("power", "");
+		session.removeAttribute("power");
 		System.out.println("/Logout: logout xong, đến trang chủ");
 		resp.sendRedirect(req.getContextPath() + "/");
 	}
