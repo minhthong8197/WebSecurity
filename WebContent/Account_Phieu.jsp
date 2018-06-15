@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="xssFilter.HtmlEncoder"%>
+<%@ page import="connection.*"%>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 %>
@@ -12,11 +12,9 @@
 <html>
 <head>
 
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
 <meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -32,21 +30,26 @@
 </head>
 <body>
 	<%
+		System.out.println("/Account_Phieu.jsp");
 		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
 		if (request.getContentLengthLong() > 50000) {
-			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			System.out.println("/Account_Phieu.jsp: dữ liệu đầu vào quá lớn, trở lại trang chủ");
 			response.sendRedirect(request.getContextPath() + "/");
 			return;
 		}
 		//load du lieu cho trang
-		Connection connection = DriverManager.getConnection(
-				"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8", "root",
-				"1234");
-		String ID = request.getParameter("UserID");
-		Statement statement = connection.createStatement();
-		ResultSet resultset = statement.executeQuery(
-				"select UserID, UserName,UserPass,FullName,Quyen,date,PhoneNumber from users where UserID='" + ID
-						+ "'");
+		String stringQuery = "select UserID, UserName, UserPass, FullName, Quyen, date, PhoneNumber from users where UserID = ?";
+		ResultSet resultset = null;
+		try {
+			String IDstr = request.getParameter("UserID");
+			int ID = Integer.parseInt(IDstr);
+			PreparedStatement pst;
+			pst = DBConnection.connect().prepareStatement(stringQuery);
+			pst.setInt(1, ID);
+			resultset = pst.executeQuery();
+		} catch (Exception e) {
+			System.out.println("/Account_Phieu.jsp: load dữ liệu thất bại");
+		}
 	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
@@ -68,7 +71,7 @@
 								<span class="glyphicon glyphicon-user"></span> Cá nhân
 							</button>
 							<button type="button" class="btn btn-default btn-sm"
-								onclick="window.location='/Logout'">
+								onclick="window.location='/WebSecurity/Logout'">
 								<span class="glyphicon glyphicon-share"></span> Đăng xuất
 							</button>
 							<hr />
@@ -132,7 +135,7 @@
 			<div class="col-xs-12 col-sm-7 col-md-7">
 				<form role="form" action="Account_Phieu.jsp">
 					<%
-						while (resultset.next()) {
+						while (resultset != null && resultset.next()) {
 					%>
 					<div class="form-group">
 						<label>Username:</label> <input type="text" class="form-control"

@@ -33,8 +33,16 @@ public class NewAccount extends HttpServlet {
 			String date = req.getParameter("DateOfBirth");
 			// kiểm tra kích thước dữ liệu đâu vào trước khi lưu xuống database
 			if (UserName.length() > 18 || Userpass.length() > 18 || FullName.length() > 30 || PhoneNumber.length() > 12
-					|| Quyen.length() > 8 || Gender.length() > 5 || date.length() > 10)
+					|| Quyen.length() > 12 || Gender.length() > 5 || date.length() > 10) {
+				System.out.println(UserName.length());
+				System.out.println(Userpass.length());
+				System.out.println(FullName.length());
+				System.out.println(PhoneNumber.length());
+				System.out.println(Quyen.length());
+				System.out.println(Gender.length());
+				System.out.println(date.length());
 				return;
+			}
 			if (DBConnection.newAcount(UserName, Userpass, FullName, Gender, PhoneNumber, Quyen, date) > 0) {
 				out.print("<script>");
 				out.print("alert(\"Tạo Tài Khoản Thành Công!!!\");");

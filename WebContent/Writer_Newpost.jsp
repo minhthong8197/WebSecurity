@@ -4,7 +4,6 @@
 <html lang="en-US">
 <head>
 
-<meta http-equiv="Content-type" content="text/html;charset=utf-8">
 <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
 <meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,9 +24,10 @@
 </head>
 <body>
 	<%
+		System.out.println("/Writer_Newpost.jsp");
 		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
 		if (request.getContentLengthLong() > 50000) {
-			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			System.out.println("/Writer_Newpost.jsp: dữ liệu đầu vào quá lớn, trở lại trang chủ");
 			response.sendRedirect(request.getContextPath() + "/");
 			return;
 		}

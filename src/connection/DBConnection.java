@@ -57,7 +57,7 @@ public class DBConnection {
 	// tao post moi
 	public static int newPost(String PostName, String PostContent, String Ptl, String Pdate) {
 		System.out.println("\t.DBConnection.newPost()");
-		String str = "insert into post1(PostName,PostContent,Ptl,Pdate,P,P1) values (?,?,?,?,'chua duyet',3)";
+		String str = "insert into post1(PostName,PostContent,Ptl,Pdate,P,P1) values (N?,N?,N?,N?,'chua duyet',3)";
 		PreparedStatement pst;
 		try {
 			pst = DBConnection.connect().prepareStatement(str);
@@ -77,7 +77,7 @@ public class DBConnection {
 	// tao post moi voi quyen admin
 	public static int newPostAd(String PostName, String PostContent, String Ptl, String Pdate) {
 		System.out.println("\t.DBConnection.newPostAd()");
-		String str = "insert into post1(PostName,PostContent,Ptl,Pdate,P,P1) values (?,?,?,?,'chua duyet',1)";
+		String str = "insert into post1(PostName,PostContent,Ptl,Pdate,P,P1) values (N?,N?,N?,N?,'chua duyet',1)";
 		try {
 			PreparedStatement pst = DBConnection.connect().prepareStatement(str);
 			pst.setString(1, PostName);
@@ -96,7 +96,7 @@ public class DBConnection {
 	public static int newAcount(String UserName, String Userpass, String FullName, String Gender, String PhoneNumber,
 			String Quyen, String date) {
 		System.out.println("\t.DBConnection.newAcount()");
-		String str = "insert into users(UserName,Userpass,FullName,Gender,PhoneNumber,Quyen,date) values (?,?,?,?,?,?,?)";
+		String str = "insert into users(UserName,Userpass,FullName,Gender,PhoneNumber,Quyen,date) values (N?,N?,N?,N?,N?,N?,N?)";
 		try {
 			PreparedStatement pst = DBConnection.connect().prepareStatement(str);
 			pst.setString(1, UserName);

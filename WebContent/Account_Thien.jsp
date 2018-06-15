@@ -4,7 +4,6 @@
 <html>
 <head>
 
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
 <meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +23,10 @@
 </head>
 <body>
 	<%
+		System.out.println("/Account_Thien.jsp");
 		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
 		if (request.getContentLengthLong() > 50000) {
-			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			System.out.println("/Account_Thien.jsp: dữ liệu đầu vào quá lớn, trở lại trang chủ");
 			response.sendRedirect(request.getContextPath() + "/");
 			return;
 		}
@@ -51,7 +51,7 @@
 								<span class="glyphicon glyphicon-user"></span> Cá nhân
 							</button>
 							<button type="button" class="btn btn-default btn-sm"
-								onclick="window.location='/Logout'">
+								onclick="window.location='/WebSecurity/Logout'">
 								<span class="glyphicon glyphicon-share"></span> Đăng xuất
 							</button>
 							<hr />

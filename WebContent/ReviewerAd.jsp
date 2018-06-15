@@ -4,6 +4,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="xssFilter.HtmlEncoder"%>
+<%@ page import="connection.*"%>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 %>
@@ -11,14 +12,11 @@
 <html>
 <head>
 
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
 <meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
@@ -34,9 +32,10 @@
 </head>
 <body>
 	<%
+		System.out.println("/ReviewerAd.jsp");
 		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
 		if (request.getContentLengthLong() > 50000) {
-			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			System.out.println("/ReviewerAd: dữ liệu đầu vào quá lớn, trở lại trang chủ");
 			response.sendRedirect(request.getContextPath() + "/");
 			return;
 		}
@@ -48,13 +47,18 @@
 			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
 			String checkStatus = request.getAttribute("CheckStatus").toString();
 			//thấy có quyền vào => load dữ liệu cho trang
-			Connection connection = DriverManager.getConnection(
-					"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8",
-					"root", "1234");
-			String ID = request.getParameter("Pid");
-			Statement statement = connection.createStatement();
-			resultset = statement
-					.executeQuery("select PostName,PostContent,Pdate,Ptl,Pid from post1 where Pid='" + ID + "'");
+			//load du lieu cho trang
+			String stringQuery = "select PostName,PostContent,Pdate,Ptl,Pid from post1 where Pid= ?";
+			try {
+				String IDstr = request.getParameter("UserID");
+				int ID = Integer.parseInt(IDstr);
+				PreparedStatement pst;
+				pst = DBConnection.connect().prepareStatement(stringQuery);
+				pst.setInt(1, ID);
+				resultset = pst.executeQuery();
+			} catch (Exception e) {
+				System.out.println("/ReviewerAd.jsp: load dữ liệu thất bại");
+			}
 		} catch (Exception e) {
 			//khi chưa kiểm tra quyền vào trang => gửi dữ liệu đi kiểm tra
 			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/CheckPower");
