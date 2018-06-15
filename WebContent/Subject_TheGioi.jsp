@@ -78,9 +78,9 @@
 								xmlns:v="http://rdf.data-vocabulary.org/#"><span
 								typeof="v:Breadcrumb"><a href="index.jsp" rel="v:url"
 									property="v:title">Trang chủ</a> / <span rel="v:child"
-									typeof="v:Breadcrumb"><a href="Subject_TinTuc.jsp" rel="v:url"
-										property="v:title">Tin tức</a> / <span class="breadcrumb_last">Thế
-											giới</span></span></span></span>
+									typeof="v:Breadcrumb"><a href="Subject_TinTuc.jsp"
+										rel="v:url" property="v:title">Tin tức</a> / <span
+										class="breadcrumb_last">Thế giới</span></span></span></span>
 						</p>
 					</ol>
 
@@ -99,8 +99,8 @@
 
 								<div class="col-xs-12 col-sm-9 col-md-8">
 									<h4>
-										<a href="News_may-bay.jsp">Việt Nam đã đón gần 140 lượt máy bay
-											dự hội nghị APEC</a>
+										<a href="News_may-bay.jsp">Việt Nam đã đón gần 140 lượt
+											máy bay dự hội nghị APEC</a>
 									</h4>
 									<article class="post-content">
 										<p>Tính đến chiều 7/11, 3 sân bay Đà Nẵng, Nội Bài, Tân
@@ -130,8 +130,8 @@
 
 								<div class="col-xs-12 col-sm-9 col-md-8">
 									<h4>
-										<a href="News_asean.jsp">Thủ tướng phát biểu tại hội nghị cấp
-											cao ASEAN - Ấn Độ</a>
+										<a href="News_asean.jsp">Thủ tướng phát biểu tại hội nghị
+											cấp cao ASEAN - Ấn Độ</a>
 									</h4>
 									<article class="post-content">
 										<p>Thủ tướng Nguyễn Xuân Phúc hôm qua thay mặt các lãnh
@@ -155,8 +155,8 @@
 
 								<div class="col-xs-12 col-sm-9 col-md-8">
 									<h4>
-										<a href="News_cuc-doan.jsp">Nga bắt giữ hàng chục nghi can Hồi
-											giáo cực đoan</a>
+										<a href="News_cuc-doan.jsp">Nga bắt giữ hàng chục nghi can
+											Hồi giáo cực đoan</a>
 									</h4>
 									<article class="post-content">
 										<p>ANTD.VN -Ngày 14/11, cơ quan an ninh nội địa hàng đầu
@@ -186,8 +186,8 @@
 											title="Mực cơm chiên giòn Đà Nẵng" /> </a>
 										<div class="txt">
 											<h4>
-												<a href="News_Muc-com-chien-gion-DN.jsp">Mực cơm chiên giòn
-													Đà Nẵng</a>
+												<a href="News_Muc-com-chien-gion-DN.jsp">Mực cơm chiên
+													giòn Đà Nẵng</a>
 											</h4>
 											<a href="News_Muc-com-chien-gion-DN.jsp" class="viell">Chi
 												tiết<i class="hk-ic"></i>
@@ -198,18 +198,21 @@
 
 								<li>
 									<div class="detail">
-										<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
+										<a
+											href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
 											class="img"> <img src="img/baimoi2.jpg"
 											alt="5 quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà Nẵng"
 											title="5 quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà Nẵng" />
 										</a>
 										<div class="txt">
 											<h4>
-												<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp">5
+												<a
+													href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp">5
 													quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà
 													Nẵng</a>
 											</h4>
-											<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
+											<a
+												href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
 												class="viell">Chi tiết<i class="hk-ic"></i></a>
 										</div>
 									</div>
@@ -335,13 +338,14 @@
 
 								<div class="col-xs-12 col-sm-6 col-md-3">
 									<div class="news-list">
-										<a href="News_Am-nhac-duong-pho-DN.jsp"><img src="img/sk4.JPG"
+										<a href="News_Am-nhac-duong-pho-DN.jsp"><img
+											src="img/sk4.JPG"
 											alt="Âm nhạc đường phố đà nẵng, sự kiện đặc sắc đà nẵng"
 											title="Âm nhạc đường phố đà nẵng, sự kiện đặc sắc đà nẵng" />
 										</a>
 										<h4>
-											<a href="News_Am-nhac-duong-pho-DN.jsp">Âm nhạc đường phố đà
-												nẵng, sự kiện đặc sắc đà nẵng</a>
+											<a href="News_Am-nhac-duong-pho-DN.jsp">Âm nhạc đường phố
+												đà nẵng, sự kiện đặc sắc đà nẵng</a>
 										</h4>
 									</div>
 								</div>
@@ -506,8 +510,8 @@
 							<div class="col-md-4">
 								<label class="radio-inline" style="margin-top: 10px"> <input
 									type="radio" name="GioiTinh">Nam
-								</label> <label class="radio-inline" style="margin-top: 10px">
-									<input type="radio" checked name="GioiTinh">Nữ
+								</label> <label class="radio-inline" style="margin-top: 10px"> <input
+									type="radio" checked name="GioiTinh">Nữ
 								</label>
 							</div>
 						</div>
@@ -556,16 +560,16 @@
 	<script type="text/javascript" src="js/validate.js"></script>
 	<script type="text/javascript" src="js/bootstrapvalidator.min.js"></script>
 	<script>
-	$(document).ready(function(){
-		$('#slider-id').camera({
-	    	playPause: false,
-	    	navigation: false,
-	    	pagination: true,
-	    	hover: false,
-	    	time: 3000,
-	    	height: '20%'
-	    });
-	});
+		$(document).ready(function() {
+			$('#slider-id').camera({
+				playPause : false,
+				navigation : false,
+				pagination : true,
+				hover : false,
+				time : 3000,
+				height : '20%'
+			});
+		});
 	</script>
 
 	<script type="text/javascript" src="js/common.js"></script>

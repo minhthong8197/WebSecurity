@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class DBConnection {
 	// tao ket noi
 	public static Connection connect() {
-		System.out.println("in connect of DBConnection");
+		System.out.println("\t.DBConnection.connect()");
 		String url = "jdbc:mysql://35.198.251.138:3306/";
 		String dbName = "websitehoithao?useUnicode=true&characterEncoding=UTF-8";
 		String driver = "com.mysql.jdbc.Driver";
@@ -21,16 +21,16 @@ public class DBConnection {
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(url + dbName, userName, password);
 		} catch (InstantiationException e) {
-			System.out.println("error in connect of DBConnection\n" + e.getMessage());
+			System.out.println("\t.DBConnection.connect() error InstantiationException");
 			// e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			System.out.println("error in connect of DBConnection\n" + e.getMessage());
+			System.out.println("\t.DBConnection.connect() error IllegalAccessException");
 			// e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			System.out.println("error in connect of DBConnection\n" + e.getMessage());
+			System.out.println("\t.DBConnection.connect() error ClassNotFoundException");
 			// e.printStackTrace();
 		} catch (SQLException e) {
-			System.out.println("error in connect of DBConnection\n" + e.getMessage());
+			System.out.println("\t.DBConnection.connect() error SQLException");
 			// e.printStackTrace();
 		}
 		return conn;
@@ -38,7 +38,7 @@ public class DBConnection {
 
 	// thuc thi cau truy van
 	public static ResultSet executeQueryResultSet(String str) {
-		System.out.println("in executeQueryResultSet of DBConnection");
+		System.out.println("\t.DBConnection.executeQueryResultSet()");
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = connect();
@@ -46,14 +46,14 @@ public class DBConnection {
 			stmt = (Statement) conn.createStatement();
 			rs = stmt.executeQuery(str);
 		} catch (Exception e) {
-			System.out.println("error in executeQueryResultSet of DBConnection\n" + e.getMessage());
+			System.out.println("\t.DBConnection.executeQueryResultSet() error");
 		}
 		return rs;
 	}
 
 	// tao post moi
 	public static int newPost(String PostName, String PostContent, String Ptl, String Pdate) {
-		System.out.println("in newPost of DBConnection");
+		System.out.println("\t.DBConnection.newPost()");
 		String str = "insert into post1(PostName,PostContent,Ptl,Pdate,P,P1) values (?,?,?,?,'chua duyet',3)";
 		PreparedStatement pst;
 		try {
@@ -65,7 +65,7 @@ public class DBConnection {
 			int i = pst.executeUpdate();
 			return i;
 		} catch (SQLException e) {
-			System.out.println("error in newPost of DBConnection\n" + e.getMessage());
+			System.out.println("\t.DBConnection.newPost() error");
 			// e.printStackTrace();
 		}
 		return 0;
@@ -73,7 +73,7 @@ public class DBConnection {
 
 	// tao post moi voi quyen admin
 	public static int newPostAd(String PostName, String PostContent, String Ptl, String Pdate) {
-		System.out.println("in newPostAd of DBConnection");
+		System.out.println("\t.DBConnection.newPostAd()");
 		String str = "insert into post1(PostName,PostContent,Ptl,Pdate,P,P1) values (?,?,?,?,'chua duyet',1)";
 		try {
 			PreparedStatement pst = DBConnection.connect().prepareStatement(str);
@@ -84,7 +84,7 @@ public class DBConnection {
 			int i = pst.executeUpdate();
 			return i;
 		} catch (Exception e) {
-			System.out.println("error in newPostAd of DBConnection\n" + e.getMessage());
+			System.out.println("\t.DBConnection.newPostAd() error");
 		}
 		return 0;
 	}
@@ -92,7 +92,7 @@ public class DBConnection {
 	// tao tai khoan moi
 	public static int newAcount(String UserName, String Userpass, String FullName, String Gender, String PhoneNumber,
 			String Quyen, String date) {
-		System.out.println("in newAcount of DBConnection");
+		System.out.println("\t.DBConnection.newAcount()");
 		String str = "insert into users(UserName,Userpass,FullName,Gender,PhoneNumber,Quyen,date) values (?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pst = DBConnection.connect().prepareStatement(str);
@@ -106,7 +106,7 @@ public class DBConnection {
 			int i = pst.executeUpdate();
 			return i;
 		} catch (SQLException e) {
-			System.out.println("error in newAcount of DBConnection\n" + e.getMessage());
+			System.out.println("\t.DBConnection.newAcount() error\n" + e.getMessage());
 		}
 		return 0;
 	}

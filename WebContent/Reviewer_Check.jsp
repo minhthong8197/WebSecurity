@@ -30,13 +30,24 @@
 </head>
 <body>
 	<%
-		Connection connection = DriverManager.getConnection(
-				"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8", "root",
-				"1234");
-
-		Statement statement = connection.createStatement();
-		ResultSet resultset = statement
-				.executeQuery("select Pid, PostName,Pdate,Ptl from post1 where P='chua duyet'");
+		ResultSet resultset = null;
+		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
+		try {
+			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
+			String checkStatus = request.getAttribute("CheckStatus").toString();
+			//thấy có quyền vào => load dữ liệu cho trang
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8",
+					"root", "1234");
+			Statement statement = connection.createStatement();
+			resultset = statement.executeQuery("select Pid, PostName,Pdate,Ptl from post1 where P='chua duyet'");
+		} catch (Exception e) {
+			//khi chưa kiểm tra quyền vào trang => gửi dữ liệu đi kiểm tra
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/CheckPower");
+			request.setAttribute("NeedPower", "Reviewer");
+			request.setAttribute("RefererURL", "/Reviewer_Check.jsp");
+			dispatcher.forward(request, response);
+		}
 	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
@@ -123,7 +134,7 @@
 							<th id="tb_post_btn"><strong>Thao tác </strong></th>
 						</tr>
 						<%
-							while (resultset.next()) {
+						while (resultset != null && resultset.next()) {
 						%>
 						<tr>
 							<td><%=resultset.getString(1)%></td>

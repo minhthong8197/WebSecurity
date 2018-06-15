@@ -1,3 +1,4 @@
+<%@page import="javax.annotation.PostConstruct"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
@@ -30,11 +31,24 @@
 </head>
 <body>
 	<%
-		Connection connection = DriverManager.getConnection(
-				"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8", "root",
-				"1234");
-		Statement statement = connection.createStatement();
-		ResultSet resultset = statement.executeQuery("select Pid, PostName,Pdate,Ptl, P from post1");
+		ResultSet resultset = null;
+		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
+		try {
+			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
+			String checkStatus = request.getAttribute("CheckStatus").toString();
+			//thấy có quyền vào => load dữ liệu cho trang
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8",
+					"root", "1234");
+			Statement statement = connection.createStatement();
+			resultset = statement.executeQuery("select Pid, PostName,Pdate,Ptl, P from post1");
+		} catch (Exception e) {
+			//khi chưa kiểm tra quyền vào trang => gửi dữ liệu đi kiểm tra
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/CheckPower");
+			request.setAttribute("NeedPower", "Writer");
+			request.setAttribute("RefererURL", "/Writer_Manager.jsp");
+			dispatcher.forward(request, response);
+		}
 	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
@@ -131,7 +145,7 @@
 								<th id="tb_post_btn"><strong>Thao tác </strong></th>
 							</tr>
 							<%
-								while (resultset.next()) {
+								while (resultset != null && resultset.next()) {
 							%>
 							<TR>
 								<TD><%=resultset.getString(1)%></td>

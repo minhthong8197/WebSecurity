@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import connection.DBConnection;
 
 public class UserDAO {
-	public static String loadUser(String userName, String userPass) {
-		System.out.println("in loadUser of UserDAO");
+	public static String loadUserPower(String userName, String userPass) {
+		System.out.println("\t.UserDAO.loadUserPower()");
 		String str = "select * from users";
 		ResultSet rs = DBConnection.executeQueryResultSet(str);
 		try {
@@ -16,7 +16,7 @@ public class UserDAO {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("error in loadUser of UserDAO\n" + e.getMessage());
+			System.out.println("\t.UserDAO.loadUserPower() error");
 		}
 		return "";
 	}

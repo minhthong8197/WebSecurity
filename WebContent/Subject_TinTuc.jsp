@@ -117,7 +117,8 @@
 
 							<div class="list-post-cat">
 								<div class="col-xs-12 col-sm-3 col-md-4">
-									<a href="News_vong-quay-mat-troi.jsp"><img src="img/giaitri.jpg"
+									<a href="News_vong-quay-mat-troi.jsp"><img
+										src="img/giaitri.jpg"
 										alt="&#8220;Vòng quay mặt trời &#8211; Sun Wheel&#8221; Đà Nẵng &#8211; Top 10 vòng quay cao nhất thế giới"
 										title="&#8220;Vòng quay mặt trời &#8211; Sun Wheel&#8221; Đà Nẵng &#8211; Top 10 vòng quay cao nhất thế giới" />
 									</a>
@@ -125,9 +126,9 @@
 
 								<div class="col-xs-12 col-sm-9 col-md-8">
 									<h4>
-										<a href="News_vong-quay-mat-troi.jsp">&#8220;Vòng quay mặt trời
-											&#8211; Sun Wheel&#8221; Đà Nẵng &#8211; Top 10 vòng quay cao
-											nhất thế giới</a>
+										<a href="News_vong-quay-mat-troi.jsp">&#8220;Vòng quay mặt
+											trời &#8211; Sun Wheel&#8221; Đà Nẵng &#8211; Top 10 vòng
+											quay cao nhất thế giới</a>
 									</h4>
 									<article class="post-content">
 										<p>Đà Nẵng sẽ ghi thêm vào danh sách các công trình độc
@@ -153,8 +154,8 @@
 
 								<div class="col-xs-12 col-sm-9 col-md-8">
 									<h4>
-										<a href="News_To-chuc-Tuan-Phim-APEC-Viet-Nam-2017.jsp">Tổ chức
-											Tuần Phim APEC Việt Nam 2017</a>
+										<a href="News_To-chuc-Tuan-Phim-APEC-Viet-Nam-2017.jsp">Tổ
+											chức Tuần Phim APEC Việt Nam 2017</a>
 									</h4>
 									<article class="post-content">
 										<p>TTO - Theo ban tổ chức, các phim được chọn trình chiếu
@@ -203,7 +204,8 @@
 									<a href="Moi-chiec-iPhone-X-ban-ra-Apple-an-day-den-2-3.jsp"><img
 										src="img/congnghe2.jpg"
 										alt="Mỗi chiếc iPhone X bán ra, Apple 'ăn dày' đến 2/3"
-										title="Mỗi chiếc iPhone X bán ra, Apple 'ăn dày' đến 2/3" /> </a>
+										title="Mỗi chiếc iPhone X bán ra, Apple 'ăn dày' đến 2/3" />
+									</a>
 								</div>
 
 								<div class="col-xs-12 col-sm-9 col-md-8">
@@ -275,8 +277,8 @@
 											title="Mực cơm chiên giòn Đà Nẵng" /> </a>
 										<div class="txt">
 											<h4>
-												<a href="News_Muc-com-chien-gion-DN.jsp">Mực cơm chiên giòn
-													Đà Nẵng</a>
+												<a href="News_Muc-com-chien-gion-DN.jsp">Mực cơm chiên
+													giòn Đà Nẵng</a>
 											</h4>
 											<a href="News_Muc-com-chien-gion-DN.jsp" class="viell">Chi
 												tiết<i class="hk-ic"></i>
@@ -287,18 +289,21 @@
 
 								<li>
 									<div class="detail">
-										<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
+										<a
+											href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
 											class="img"> <img src="img/baimoi2.jpg"
 											alt="5 quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà Nẵng"
 											title="5 quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà Nẵng" />
 										</a>
 										<div class="txt">
 											<h4>
-												<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp">5
+												<a
+													href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp">5
 													quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà
 													Nẵng</a>
 											</h4>
-											<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
+											<a
+												href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
 												class="viell">Chi tiết<i class="hk-ic"></i></a>
 										</div>
 									</div>
@@ -424,13 +429,14 @@
 
 								<div class="col-xs-12 col-sm-6 col-md-3">
 									<div class="news-list">
-										<a href="News_Am-nhac-duong-pho-DN.jsp"><img src="img/sk4.JPG"
+										<a href="News_Am-nhac-duong-pho-DN.jsp"><img
+											src="img/sk4.JPG"
 											alt="Âm nhạc đường phố đà nẵng, sự kiện đặc sắc đà nẵng"
 											title="Âm nhạc đường phố đà nẵng, sự kiện đặc sắc đà nẵng" />
 										</a>
 										<h4>
-											<a href="News_Am-nhac-duong-pho-DN.jsp">Âm nhạc đường phố đà
-												nẵng, sự kiện đặc sắc đà nẵng</a>
+											<a href="News_Am-nhac-duong-pho-DN.jsp">Âm nhạc đường phố
+												đà nẵng, sự kiện đặc sắc đà nẵng</a>
 										</h4>
 									</div>
 								</div>
@@ -595,8 +601,8 @@
 							<div class="col-md-4">
 								<label class="radio-inline" style="margin-top: 10px"> <input
 									type="radio" name="GioiTinh">Nam
-								</label> <label class="radio-inline" style="margin-top: 10px">
-									<input type="radio" checked name="GioiTinh">Nữ
+								</label> <label class="radio-inline" style="margin-top: 10px"> <input
+									type="radio" checked name="GioiTinh">Nữ
 								</label>
 							</div>
 						</div>
@@ -645,16 +651,16 @@
 	<script type="text/javascript" src="js/validate.js"></script>
 	<script type="text/javascript" src="js/bootstrapvalidator.min.js"></script>
 	<script>
-	$(document).ready(function(){
-		$('#slider-id').camera({
-	    	playPause: false,
-	    	navigation: false,
-	    	pagination: true,
-	    	hover: false,
-	    	time: 3000,
-	    	height: '20%'
-	    });
-	});
+		$(document).ready(function() {
+			$('#slider-id').camera({
+				playPause : false,
+				navigation : false,
+				pagination : true,
+				hover : false,
+				time : 3000,
+				height : '20%'
+			});
+		});
 	</script>
 
 	<script type="text/javascript" src="js/common.js"></script>

@@ -15,7 +15,7 @@ public class NewAd extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-		System.out.println("in doPost of servlet NewAd");
+		System.out.println("/NewAd");
 		try {
 			resp.setContentType("text/html;charset=utf8");
 			PrintWriter out = resp.getWriter();
@@ -27,14 +27,14 @@ public class NewAd extends HttpServlet {
 				out.print("<script>");
 				out.print("alert(\"Gửi Bài Viết Thành Công!!!\");");
 				out.print("</script>");
-				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/Admin_Manager_Post.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/Admin_Manager_Post.jsp");
 				rd.include(req, resp);
 			} else {
-				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/Admin_Manager_Post.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/Admin_Manager_Post.jsp");
 				rd.include(req, resp);
 			}
 		} catch (Exception e) {
-			System.out.println("error in doPost of servlet NewAd\n" + e.getMessage());
+			System.out.println("/NewAd error");
 		}
 	}
 }

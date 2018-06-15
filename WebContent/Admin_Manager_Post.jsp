@@ -30,11 +30,24 @@
 </head>
 <body>
 	<%
-		Connection connection = DriverManager.getConnection(
-				"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8", "root",
-				"1234");
-		Statement statement = connection.createStatement();
-		ResultSet resultset = statement.executeQuery("select UserID, UserName,UserPass,FullName,Quyen from users");
+		ResultSet resultset = null;
+		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
+		try {
+			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
+			String checkStatus = request.getAttribute("CheckStatus").toString();
+			//thấy có quyền vào => load dữ liệu cho trang
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8",
+					"root", "1234");
+			Statement statement = connection.createStatement();
+			resultset = statement.executeQuery("select Pid, PostName,Pdate,Ptl, P from post1");
+		} catch (Exception e) {
+			//khi chưa kiểm tra quyền vào trang => gửi dữ liệu đi kiểm tra
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/CheckPower");
+			request.setAttribute("NeedPower", "Admin");
+			request.setAttribute("RefererURL", "/Admin_Manager_Post.jsp");
+			dispatcher.forward(request, response);
+		}
 	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
@@ -112,18 +125,16 @@
 		<!-- Header -->
 		<div class="row" id="Post_Action">
 			<h1>
-				<strong>QUẢN LÝ TÀI KHOẢN</strong><small> |Danh sách tài
-					khoản</small>
+				<strong>BÀI VIẾT</strong><small> |Quản lý bài viết</small>
 			</h1>
 		</div>
 		<!-- Buton for writer -->
 		<div class="row">
 			<div
 				class="col-xs-2 col-xs-offset-8 col-sm-2 col-sm-offset-8 col-md-2 col-md-offset-10">
-				<form action="#">
-					<button type="button" class="btn btn-success" id="btn_NewAcc"
-						onclick="window.location='Admin_Account_New.jsp'">
-						<span class="glyphicon glyphicon-plus-sign"></span> Thêm tài khoản
+				<form action="Admin_Newpost.jsp">
+					<button type="submit" class="btn btn-success" id="btn_Newpost">
+						<span class="glyphicon glyphicon-pencil"></span> Bài viết mới
 					</button>
 				</form>
 			</div>
@@ -134,29 +145,29 @@
 				<div class="table-responsive">
 					<table class="table table-bordered" id="tb_post">
 						<tr>
-							<th id="tb_Acc_tt"><strong>STT</strong></th>
-							<th id="tb_Acc_username">Username</th>
-							<th id="tb_Acc_pass"><strong>Password</strong></th>
-							<th id="tb_Acc_Fullname"><strong>Họ và tên</strong></th>
-							<th id="tb_Acc_mail"><strong>Vai trò</strong></th>
-							<th id="tb_Acc_details"><strong>Thông tin chi tiết</strong></th>
-							<th id="tb_Acc_Action"><strong> Thao tác </strong></th>
+							<th id="tb_post_tt"><strong>STT</strong></th>
+
+							<th id="tb_post_name"><strong>Tên bài viết</strong></th>
+							<th id="tb_post_time"><strong>Thời gian</strong></th>
+							<th id="tb_post_cat"><strong>Thể loại</strong></th>
+							<th id="tb_post_stt"><strong>Tình trạng</strong></th>
+							<th id="tb_post_btn"><strong>Thao tác </strong></th>
 						</tr>
 						<%
-							while (resultset.next()) {
+						while (resultset != null && resultset.next()) {
 						%>
-						<tr>
-							<td><%=resultset.getString(1)%></td>
-							<td><%=resultset.getString(2)%></td>
-							<td><%=resultset.getString(3)%></td>
-							<td><%=resultset.getString(4)%></td>
-							<td><%=resultset.getString(5)%></td>
+						<TR>
+							<TD><%=resultset.getString(1)%></td>
+							<TD><%=resultset.getString(2)%></TD>
+							<TD><%=resultset.getString(3)%></TD>
+							<TD><%=resultset.getString(4)%></TD>
+
+							<TD><%=resultset.getString(5)%></TD>
+
 							<td><a
-								href="Account_Phieu.jsp?UserID=<%=resultset.getString(1)%>">Xem
-									chi tiết</a></td>
-							<td><a href="Xoa.jsp?UserID=<%=resultset.getString(1)%>"><input
-									type="button" class="btn-warning btn-sm" value="Xóa"
-									onclick="myFunction()" /></a></td>
+								href="News_Moi-chiec-iPhone-X-ban-ra-Apple-an-day-den-2-3.jsp">Xem
+									nội dung</a></td>
+
 						</tr>
 						<%
 							}
@@ -221,5 +232,6 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+
 </body>
 </html>

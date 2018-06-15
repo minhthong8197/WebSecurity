@@ -78,9 +78,9 @@
 								xmlns:v="http://rdf.data-vocabulary.org/#"><span
 								typeof="v:Breadcrumb"><a href="index.jsp" rel="v:url"
 									property="v:title">Trang chủ</a> / <span rel="v:child"
-									typeof="v:Breadcrumb"><a href="Subject_TinTuc.jsp" rel="v:url"
-										property="v:title">Tin tức</a> / <span class="breadcrumb_last">Giáo
-											dục</span></span></span></span>
+									typeof="v:Breadcrumb"><a href="Subject_TinTuc.jsp"
+										rel="v:url" property="v:title">Tin tức</a> / <span
+										class="breadcrumb_last">Giáo dục</span></span></span></span>
 						</p>
 					</ol>
 
@@ -192,8 +192,8 @@
 											title="Mực cơm chiên giòn Đà Nẵng" /> </a>
 										<div class="txt">
 											<h4>
-												<a href="News_Muc-com-chien-gion-DN.jsp">Mực cơm chiên giòn
-													Đà Nẵng</a>
+												<a href="News_Muc-com-chien-gion-DN.jsp">Mực cơm chiên
+													giòn Đà Nẵng</a>
 											</h4>
 											<a href="News_Muc-com-chien-gion-DN.jsp" class="viell">Chi
 												tiết<i class="hk-ic"></i>
@@ -204,18 +204,21 @@
 
 								<li>
 									<div class="detail">
-										<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
+										<a
+											href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
 											class="img"> <img src="img/baimoi2.jpg"
 											alt="5 quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà Nẵng"
 											title="5 quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà Nẵng" />
 										</a>
 										<div class="txt">
 											<h4>
-												<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp">5
+												<a
+													href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp">5
 													quán ăn trong hẻm &#8216;thử lòng&#8217; du khách tới Đà
 													Nẵng</a>
 											</h4>
-											<a href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
+											<a
+												href="News_5-quan-an-trong-hem-thu-long-du-khach-toi-DN.jsp"
 												class="viell">Chi tiết<i class="hk-ic"></i></a>
 										</div>
 									</div>
@@ -341,13 +344,14 @@
 
 								<div class="col-xs-12 col-sm-6 col-md-3">
 									<div class="news-list">
-										<a href="News_Am-nhac-duong-pho-DN.jsp"><img src="img/sk4.JPG"
+										<a href="News_Am-nhac-duong-pho-DN.jsp"><img
+											src="img/sk4.JPG"
 											alt="Âm nhạc đường phố đà nẵng, sự kiện đặc sắc đà nẵng"
 											title="Âm nhạc đường phố đà nẵng, sự kiện đặc sắc đà nẵng" />
 										</a>
 										<h4>
-											<a href="News_Am-nhac-duong-pho-DN.jsp">Âm nhạc đường phố đà
-												nẵng, sự kiện đặc sắc đà nẵng</a>
+											<a href="News_Am-nhac-duong-pho-DN.jsp">Âm nhạc đường phố
+												đà nẵng, sự kiện đặc sắc đà nẵng</a>
 										</h4>
 									</div>
 								</div>
@@ -512,8 +516,8 @@
 							<div class="col-md-4">
 								<label class="radio-inline" style="margin-top: 10px"> <input
 									type="radio" name="GioiTinh">Nam
-								</label> <label class="radio-inline" style="margin-top: 10px">
-									<input type="radio" checked name="GioiTinh">Nữ
+								</label> <label class="radio-inline" style="margin-top: 10px"> <input
+									type="radio" checked name="GioiTinh">Nữ
 								</label>
 							</div>
 						</div>
@@ -563,16 +567,16 @@
 	<script type="text/javascript" src="js/bootstrapvalidator.min.js"></script>
 
 	<script>
-	$(document).ready(function(){
-		$('#slider-id').camera({
-	    	playPause: false,
-	    	navigation: false,
-	    	pagination: true,
-	    	hover: false,
-	    	time: 3000,
-	    	height: '20%'
-	    });
-	});
+		$(document).ready(function() {
+			$('#slider-id').camera({
+				playPause : false,
+				navigation : false,
+				pagination : true,
+				hover : false,
+				time : 3000,
+				height : '20%'
+			});
+		});
 	</script>
 
 	<script type="text/javascript" src="js/common.js"></script>

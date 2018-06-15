@@ -24,6 +24,20 @@
 
 </head>
 <body>
+	<%
+		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
+		try {
+			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
+			String checkStatus = request.getAttribute("CheckStatus").toString();
+			//thấy có quyền vào => cho vao
+		} catch (Exception e) {
+			//khi chưa kiểm tra quyền vào trang => gửi dữ liệu đi kiểm tra
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/CheckPower");
+			request.setAttribute("NeedPower", "Writer");
+			request.setAttribute("RefererURL", "/Writer_Tailieulaptrinh.jsp");
+			dispatcher.forward(request, response);
+		}
+	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
 		<div id="header">
@@ -95,7 +109,7 @@
 			<!-- Form for New post -->
 			<div class="row" id="Form_Newpost">
 				<div class="col-xs-12 col-sm-12 col-md-12">
-					<form role="form" action="Writer_Manager.jsp">
+					<form role="form" action="/WEB-INF/Writer_Manager.jsp">
 						<div class="form-group">
 							<label>Tên Bài viết</label> <input type="text" name="P_name"
 								class="form-control" id="txtPostname"

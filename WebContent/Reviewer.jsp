@@ -33,15 +33,26 @@
 </head>
 <body>
 	<%
-		Connection connection = DriverManager.getConnection(
-				"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8", "root",
-				"1234");
-
-		String ID = request.getParameter("Pid");
-
-		Statement statement = connection.createStatement();
-		ResultSet resultset = statement
-				.executeQuery("select PostName,PostContent,Pdate,Ptl,Pid from post1 where Pid='" + ID + "'");
+		ResultSet resultset = null;
+		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
+		try {
+			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
+			String checkStatus = request.getAttribute("CheckStatus").toString();
+			//thấy có quyền vào => load dữ liệu cho trang
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://35.198.251.138:3306/websitehoithao?useUnicode=true&characterEncoding=UTF-8",
+					"root", "1234");
+			String ID = request.getParameter("Pid");
+			Statement statement = connection.createStatement();
+			resultset = statement
+					.executeQuery("select PostName,PostContent,Pdate,Ptl,Pid from post1 where Pid='" + ID + "'");
+		} catch (Exception e) {
+			//khi chưa kiểm tra quyền vào trang => gửi dữ liệu đi kiểm tra
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/CheckPower");
+			request.setAttribute("NeedPower", "Reviewer");
+			request.setAttribute("RefererURL", "/Reviewer.jsp");
+			dispatcher.forward(request, response);
+		}
 	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
@@ -115,9 +126,9 @@
 			<!-- Form for New post -->
 			<div class="row" id="Form_Newpost">
 				<div class="col-xs-12 col-sm-12 col-md-12">
-					<form role="form" action="Writer_Manager.jsp">
+					<form role="form" action="/WEB-INF/Writer_Manager.jsp">
 						<%
-							while (resultset.next()) {
+							while (resultset != null && resultset.next()) {
 						%>
 						<div class="form-group">
 							<label>Tên Bài viết</label> <input type="text" name="P_name"

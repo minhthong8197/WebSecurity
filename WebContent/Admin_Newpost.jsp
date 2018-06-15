@@ -26,6 +26,20 @@
 
 </head>
 <body>
+	<%
+		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
+		try {
+			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
+			String checkStatus = request.getAttribute("CheckStatus").toString();
+			//thấy có quyền vào => cho vaof
+		} catch (Exception e) {
+			//khi chưa kiểm tra quyền vào trang => gửi dữ liệu đi kiểm tra
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/CheckPower");
+			request.setAttribute("NeedPower", "Admin");
+			request.setAttribute("RefererURL", "/Admin_Newpost.jsp");
+			dispatcher.forward(request, response);
+		}
+	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
 		<div id="header">

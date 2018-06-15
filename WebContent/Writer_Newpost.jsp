@@ -24,6 +24,20 @@
 
 </head>
 <body>
+	<%
+		//tự động đi kiểm tra quyền để cho phép vào trang hay ko
+		try {
+			//kiểm tra xem trong request đã có cho phép vào chưa, có rồi tức là kiểm tra rồi
+			String checkStatus = request.getAttribute("CheckStatus").toString();
+			//thấy có quyền vào => cho vao
+		} catch (Exception e) {
+			//khi chưa kiểm tra quyền vào trang => gửi dữ liệu đi kiểm tra
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/CheckPower");
+			request.setAttribute("NeedPower", "Writer");
+			request.setAttribute("RefererURL", "/Writer_Newpost.jsp");
+			dispatcher.forward(request, response);
+		}
+	%>
 	<div id="wrapper">
 		<!-- Header = Logo + btnUser + Menu -->
 		<div id="header">
@@ -39,8 +53,7 @@
 					</div>
 					<div id="btn_User">
 						<div class="col-xs-12 col-sm-4 col-md-3 " id="header_btn">
-							<button type="button" class="btn btn-primary"
-								onclick="window.location='Account.jsp'">
+							<button type="button" class="btn btn-primary">
 								<span class="glyphicon glyphicon-user"></span> Cá nhân
 							</button>
 							<button type="button" class="btn btn-default btn-sm"

@@ -6,7 +6,7 @@ import connection.DBConnection;
 
 public class PostDAO {
 	public static int add(String PostName, String PostContent) {
-		System.out.println("in add of PostDAO");
+		System.out.println("\t.PostDAO.add()");
 		String str = "insert into post(PostName,PostContent) values (?,?)";
 		try {
 			PreparedStatement pst = DBConnection.connect().prepareStatement(str);
@@ -15,7 +15,7 @@ public class PostDAO {
 			int i = pst.executeUpdate();
 			return i;
 		} catch (Exception e) {
-			System.out.println("error in add of PostDAO\n" + e.getMessage());
+			System.out.println("\t.PostDAO.add() error");
 		}
 		return 0;
 	}

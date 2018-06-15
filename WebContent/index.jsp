@@ -391,7 +391,7 @@
 		</div>
 		<!-- end footer -->
 	</div>
-
+	<!-- form ẩn -->
 	<div class="modal fade" id="Modal_Login" role="dialog">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
@@ -432,7 +432,6 @@
 						<div>
 							<input type="checkbox" checked="checked"> Ghi nhớ tài
 							khoản<br />
-
 						</div>
 						<br />
 						<div class="row">
@@ -440,9 +439,7 @@
 								<button type="submit" class="btn btn-primary">Đăng Nhập</button>
 							</div>
 						</div>
-
 					</div>
-					<div class="modal-footer"></div>
 				</form>
 			</div>
 		</div>

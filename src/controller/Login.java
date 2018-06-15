@@ -1,8 +1,7 @@
 package controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,43 +15,57 @@ public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-		System.out.println("in doPost of servlet Login");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("/Login");
+		// thông tin tài khoản gửi lên server
 		String username = "";
 		String password = "";
+		// biến lưu quyền trong hệ thống
+		String power = "";
 		username = req.getParameter("userName");
 		password = req.getParameter("password");
-
+		HttpSession session = req.getSession();
 		try {
-			String tbl = UserDAO.loadUser(username, password);
-			if (tbl.equals("Admin")) {
-				HttpSession session = req.getSession();
-				session.setAttribute("userName", username);
-				RequestDispatcher dispatcher = this.getServletContext()
-						.getRequestDispatcher("/WEB-INF/Admin_Manager_Post.jsp");
-				dispatcher.forward(req, resp);
-				System.out.println("Welcome Admin " + username);
-			} else if (tbl.equals("Writer")) {
-				HttpSession session = req.getSession();
-				session.setAttribute("userName", username);
-				RequestDispatcher dispatcher = this.getServletContext()
-						.getRequestDispatcher("/WEB-INF/Reviewer_Check.jsp");
-				dispatcher.forward(req, resp);
-				System.out.println("Connection Successfully As Writer " + username);
-			} else if (tbl.equals("Reviewer")) {
-				HttpSession session = req.getSession();
-				session.setAttribute("userName", username);
-				RequestDispatcher dispatcher = this.getServletContext()
-						.getRequestDispatcher("/WEB-INF/Writer_Manager.jsp");
-				dispatcher.forward(req, resp);
-				System.out.println("Connection Successfully As Reviewer " + username);
-			} else {
-				System.out.println("Connection Failed");
+			// kiểm tra quyền đang có trong hệ thống, nếu có rồi phải đăng xuất
+			power = session.getAttribute("power").toString();// nếu null => catch
+			System.out.println("/Login: quyền đang có trong hệ thống: " + power);
+			// nếu quyền có rồi, yêu cầu đăng xuất và về trang chủ
+			if (power.equals("") == false) {
+				System.out.println("/Login: đã có quyền trong hệ thống, yêu cầu đăng xuất");
+				resp.setContentType("text/html;charset=utf8");
+				PrintWriter out = resp.getWriter();
+				out.print("<script>");
+				out.print("alert(\"Bạn cần đăng xuất trước khi đăng nhập lại!!!\");");
+				out.print("</script>");
+				resp.sendRedirect(req.getContextPath() + "/");
+				return;
 			}
-		} catch (ServletException e) {
-			System.out.println("error in doPost of servlet Login\n" + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("/Login: chưa có quyền trong hệ thống, tiến hành kiểm tra đăng nhập");
+		}
+		// biến lưu nơi chuyển hướng tùy theo quyền của tài khoản
+		String dispatcherURL = "/";
+		try {
+			power = UserDAO.loadUserPower(username, password);
+			// kiểm tra quyền và gắn nơi chuyển hướng tương ứng
+			if (power.equals("Admin")) {
+				dispatcherURL = "/Admin_Manager_Post.jsp";
+				System.out.println("/Login: Welcome Admin " + username);
+			} else if (power.equals("Writer")) {
+				dispatcherURL = "/Writer_Manager.jsp";
+				System.out.println("/Login: Welcome Writer " + username);
+			} else if (power.equals("Reviewer")) {
+				dispatcherURL = "/Reviewer_Check.jsp";
+				System.out.println("/Login: Welcome Reviewer " + username);
+			} else {
+				System.out.println("Login Failed");
+			}
+			// đã có link chuyển hướng, tiến hành chuyển hướng
+			session.setAttribute("userName", username);
+			session.setAttribute("power", power);
+			resp.sendRedirect(req.getContextPath() + dispatcherURL);
 		} catch (IOException e) {
-			System.out.println("error in doPost of servlet Login\n" + e.getMessage());
+			System.out.println("/Login error IOException");
 		}
 	}
 }
