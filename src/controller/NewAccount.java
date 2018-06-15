@@ -17,7 +17,7 @@ public class NewAccount extends HttpServlet {
 		System.out.println("/NewAccount");
 		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
 		if (req.getContentLengthLong() > 50000) {
-			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			System.out.println("/NewAccount: dữ liệu đầu vào quá lớn, trở lại trang chủ");
 			resp.sendRedirect(req.getContextPath() + "/");
 			return;
 		}

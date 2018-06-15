@@ -1,8 +1,10 @@
+<%@page import="xssFilter.HtmlEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="xssFilter.HtmlEncoder"%>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 %>
@@ -135,7 +137,7 @@
 					<div class="form-group">
 						<label>Username:</label> <input type="text" class="form-control"
 							id="txtUsername" name="Username" maxlength="18"
-							value="<%=resultset.getString(2)%>"> <label>Password:</label>
+							value="htmlEncode(<%=resultset.getString(2)%>)"> <label>Password:</label>
 						<input type="Password" name="Password" class="form-control"
 							id="txtPass" value="<%=resultset.getString(3)%>" maxlength="18">
 						<label>Họ và tên:</label> <input type="text" class="form-control"
@@ -216,6 +218,10 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
-
+	<script type="text/javascript">
+		function htmlEncode(value) {
+			return $('<div/>').text(value).html();
+		}
+	</script>
 </body>
 </html>

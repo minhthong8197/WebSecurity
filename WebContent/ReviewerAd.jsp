@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="xssFilter.HtmlEncoder"%>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 %>
@@ -141,14 +142,16 @@
 						<div class="form-group">
 							<label>Tên Bài viết</label> <input maxlength="100" type="text"
 								name="P_name" class="form-control" id="txtPostname"
-								value="<%=resultset.getString(1)%>"> <label>Ngày
-								viết</label> <input maxlength="10" type="date" class="form-control"
-								id="txtDate" value="<%=resultset.getString(3)%>"> <label>Thể
-								loại</label> <input maxlength="15" type="text" class="form-control"
-								id="txtPostname" value="<%=resultset.getString(4)%>"> <label>Nội
-								dung</label>
+								value="<%=HtmlEncoder.escapeHTML(resultset.getString(1))%>">
+							<label>Ngày viết</label> <input maxlength="10" type="date"
+								class="form-control" id="txtDate"
+								value="<%=HtmlEncoder.escapeHTML(resultset.getString(3))%>">
+							<label>Thể loại</label> <input maxlength="15" type="text"
+								class="form-control" id="txtPostname"
+								value="<%=HtmlEncoder.escapeHTML(resultset.getString(4))%>">
+							<label>Nội dung</label>
 							<textarea maxlength="20000" class="form-control" id="txtarea"
-								rows="15"> <%=resultset.getString(2)%> </textarea>
+								rows="15"> <%=HtmlEncoder.escapeHTML(resultset.getString(2))%> </textarea>
 							<script>
 								CKEDITOR.replace('txtarea');
 							</script>
@@ -157,11 +160,13 @@
 								placeholder="Nhập đánh giá"> <br />
 							<div class="col-md-3 col-md-offset-9">
 
-								<a href="DuyetAd.jsp?Pid=<%=resultset.getString(5)%>">
+								<a
+									href="DuyetAd.jsp?Pid=<%=HtmlEncoder.escapeHTML(resultset.getString(5))%>">
 									<button type="button" class="btn btn-success" id="btnSubmit">
 										<span class="glyphicon glyphicon-ok"></span> Chấp nhận
 									</button>
-								</a> <a href="HuyAd.jsp?Pid=<%=resultset.getString(5)%>">
+								</a> <a
+									href="HuyAd.jsp?Pid=<%=HtmlEncoder.escapeHTML(resultset.getString(5))%>">
 									<button type="button" class="btn btn-danger" id="btnCancel">
 										<span class="glyphicon glyphicon-remove"></span> Từ chối
 									</button>

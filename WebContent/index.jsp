@@ -417,7 +417,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" id="id" class="form-control "
+									<input type="text" id="id" maxlength="18" class="form-control "
 										name="userName" placeholder="6-18 kí tự">
 								</div>
 							</div>
@@ -431,8 +431,8 @@
 							</div>
 							<div class="row">
 								<div class="col-md-12">
-									<input type="password" id="password" class="form-control"
-										name="password" placeholder="6-18 kí tự">
+									<input type="password" maxlength="18" id="password"
+										class="form-control" name="password" placeholder="6-18 kí tự">
 								</div>
 							</div>
 						</div>
@@ -464,29 +464,29 @@
 						<div class="row">
 							<h4 class="col-md-4">Tài Khoản</h4>
 							<div class="col-md-4">
-								<input type="text" class="form-control" id="id" name="id"
-									placeholder="6-18 kí tự">
+								<input maxlength="18" type="text" class="form-control" id="id"
+									name="id" placeholder="6-18 kí tự">
 							</div>
 						</div>
 						<div class="row">
 							<h4 class="col-md-4">Mật Khẩu:</h4>
 							<div class="col-md-4">
-								<input type="text" id="password" class="form-control "
-									name="password" placeholder="6-18 kí tự">
+								<input maxlength="18" type="text" id="password"
+									class="form-control " name="password" placeholder="6-18 kí tự">
 							</div>
 						</div>
 						<div class="row">
 							<h4 class="col-md-4">Nhập Lại Mật Khẩu</h4>
 							<div class="col-md-4">
-								<input type="text" class="form-control" id="repassword"
-									name="repassword" placeholder="6-18 kí tự">
+								<input maxlength="18" type="text" class="form-control"
+									id="repassword" name="repassword" placeholder="6-18 kí tự">
 							</div>
 						</div>
 						<div class="row">
 							<h4 class="col-md-4">Họ Tên</h4>
 							<div class="col-md-4">
-								<input type="text" class="form-control" id="hoten" name="hoten"
-									placeholder="6-18 kí tự">
+								<input maxlength="30" type="text" class="form-control"
+									id="hoten" name="hoten" placeholder="6-18 kí tự">
 							</div>
 						</div>
 						<div class="row">
@@ -502,29 +502,29 @@
 						<div class="row">
 							<h4 class="col-md-4">Ngày sinh</h4>
 							<div class="col-md-4">
-								<input type="text" id="date" class="form-control " name="date"
-									placeholder="dd/mm/yy">
+								<input maxlength="10" type="text" id="date"
+									class="form-control " name="date" placeholder="dd/mm/yy">
 							</div>
 						</div>
 						<div class="row">
 							<h4 class="col-md-4">Email</h4>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="email" name="email"
-									placeholder="6-18 kí tự">
+								<input maxlength="20" type="text" class="form-control"
+									id="email" name="email" placeholder="6-18 kí tự">
 							</div>
 						</div>
 						<div class="row">
 							<h4 class="col-md-4">Số Điện Thoại</h4>
 							<div class="col-md-4">
-								<input type="text" class="form-control" id="sdt" name="sdt"
-									placeholder="6-18 kí tự">
+								<input maxlength="15" type="text" class="form-control" id="sdt"
+									name="sdt" placeholder="6-18 kí tự">
 							</div>
 						</div>
 						<div class="row">
 							<h4 class="col-md-4">Địa Chỉ</h4>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="diachi"
-									name="diachi" placeholder="6-18 kí tự">
+								<input maxlength="50" type="text" class="form-control"
+									id="diachi" name="diachi" placeholder="6-18 kí tự">
 							</div>
 						</div>
 					</div>

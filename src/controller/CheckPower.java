@@ -18,7 +18,7 @@ public class CheckPower extends HttpServlet {
 		System.out.println("/CheckPower");
 		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
 		if (req.getContentLengthLong() > 50000) {
-			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			System.out.println("/CheckPower: dữ liệu đầu vào quá lớn, trở lại trang chủ");
 			resp.sendRedirect(req.getContextPath() + "/");
 			return;
 		}

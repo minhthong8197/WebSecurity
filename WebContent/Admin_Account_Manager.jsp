@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="xssFilter.HtmlEncoder"%>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 %>
@@ -167,11 +168,11 @@
 							while (resultset != null && resultset.next()) {
 						%>
 						<tr>
-							<td><%=resultset.getString(1)%></td>
-							<td><%=resultset.getString(2)%></td>
-							<td><%=resultset.getString(3)%></td>
-							<td><%=resultset.getString(4)%></td>
-							<td><%=resultset.getString(5)%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(1))%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(2))%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(3))%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(4))%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(5))%></td>
 							<td><a
 								href="Account_Phieu.jsp?UserID=<%=resultset.getString(1)%>">Xem
 									chi tiết</a></td>

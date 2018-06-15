@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="xssFilter.HtmlEncoder"%>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 %>
@@ -145,11 +146,10 @@
 							while (resultset != null && resultset.next()) {
 						%>
 						<tr>
-							<td><%=resultset.getString(1)%></td>
-
-							<td><%=resultset.getString(2)%></td>
-							<td><%=resultset.getString(3)%></td>
-							<td><%=resultset.getString(4)%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(1))%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(2))%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(3))%></td>
+							<td><%=HtmlEncoder.escapeHTML(resultset.getString(4))%></td>
 							<td>phanthien@gmail.com</td>
 							<td><a href="Reviewer.jsp?Pid=<%=resultset.getString(1)%>">Xem
 									nội dung</a></td>

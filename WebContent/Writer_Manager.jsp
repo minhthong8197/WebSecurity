@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="xssFilter.HtmlEncoder"%>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 %>
@@ -156,13 +157,11 @@
 								while (resultset != null && resultset.next()) {
 							%>
 							<TR>
-								<TD><%=resultset.getString(1)%></td>
-								<TD><%=resultset.getString(2)%></TD>
-								<TD><%=resultset.getString(3)%></TD>
-								<TD><%=resultset.getString(4)%></TD>
-
-								<TD><%=resultset.getString(5)%></TD>
-
+								<td><%=HtmlEncoder.escapeHTML(resultset.getString(1))%></td>
+								<td><%=HtmlEncoder.escapeHTML(resultset.getString(2))%></td>
+								<td><%=HtmlEncoder.escapeHTML(resultset.getString(3))%></td>
+								<td><%=HtmlEncoder.escapeHTML(resultset.getString(4))%></td>
+								<td><%=HtmlEncoder.escapeHTML(resultset.getString(5))%></td>
 								<td><a
 									href="News_Moi-chiec-iPhone-X-ban-ra-Apple-an-day-den-2-3.jsp">Xem
 										nội dung</a></td>

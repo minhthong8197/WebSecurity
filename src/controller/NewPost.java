@@ -17,7 +17,7 @@ public class NewPost extends HttpServlet {
 		System.out.println("/NewPost");
 		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
 		if (req.getContentLengthLong() > 50000) {
-			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			System.out.println("/NewPost: dữ liệu đầu vào quá lớn, trở lại trang chủ");
 			resp.sendRedirect(req.getContextPath() + "/");
 			return;
 		}
@@ -28,7 +28,7 @@ public class NewPost extends HttpServlet {
 			String PostContent = req.getParameter("txtcontent");
 			String Pdate = req.getParameter("P_date");
 			String Ptl = req.getParameter("P_tl");
-			if (PostName.length() > 100 || PostContent.length() > 20000 || Pdate.length() > 10 || Ptl.length() > 12)
+			if (PostName.length() > 100 || PostContent.length() > 20000 || Pdate.length() > 10 || Ptl.length() > 15)
 				return;
 			if (DBConnection.newPost(PostName, PostContent, Ptl, Pdate) > 0) {
 				out.print("<script>");

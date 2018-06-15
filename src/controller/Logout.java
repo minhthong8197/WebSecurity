@@ -19,7 +19,7 @@ public class Logout extends HttpServlet {
 		HttpSession session = req.getSession();
 		// kiểm tra nếu dữ liệu đầu vào trong request quá lớn
 		if (req.getContentLengthLong() > 50000) {
-			System.out.println("/Login: dữ liệu đầu vào quá lớn, trở lại trang chủ");
+			System.out.println("/Logout: dữ liệu đầu vào quá lớn, trở lại trang chủ");
 			resp.sendRedirect(req.getContextPath() + "/");
 			return;
 		}
