@@ -1,4 +1,4 @@
-package xssFilter;
+/*package xssFilter;
 
 import java.util.regex.Pattern;
 
@@ -82,3 +82,4 @@ public class XSSRequestWrapper extends HttpServletRequestWrapper {
 		return value;
 	}
 }
+*/

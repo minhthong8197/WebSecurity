@@ -61,7 +61,7 @@
 					<div id="btn_User">
 						<div class="col-xs-12 col-sm-4 col-md-3 " id="header_btn">
 							<button type="button" class="btn btn-primary"
-								onclick="window.location='Account.jsp'">
+								onclick="window.location='Account_Thien.jsp'">
 								<span class="glyphicon glyphicon-user"></span> Cá nhân
 							</button>
 							<button type="button" class="btn btn-default btn-sm"
